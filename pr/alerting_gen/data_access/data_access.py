@@ -60,4 +60,8 @@ def get_jenkins_builds_df():
 
     return get_jenkins_data(server)[1]
 
-
+# 🆕 slack channel logs or messages
+def get_slack_data_p1():
+    slack_token = os.environ["slack_token"]
+    channel_id = os.environ["slack_channel_id"]
+    return get_slack_data(slack_token, channel_id)
