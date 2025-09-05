@@ -60,4 +60,22 @@ def get_jenkins_builds_df():
 
     return get_jenkins_data(server)[1]
 
+# In your data_access.py file
 
+# ... (existing code) ...
+
+# NEW FUNCTION ADDED FOR PROJ-7
+import requests
+
+def fetch_user_by_id(user_id: str):
+    """
+    Fetches user data from the example API for a given user ID.
+    """
+    endpoint = f"https://api.example.com/users/{user_id}"
+    try:
+        response = requests.get(endpoint)
+        response.raise_for_status() # Raise an exception for bad status codes (4xx or 5xx)
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching user data: {e}")
+        return None
